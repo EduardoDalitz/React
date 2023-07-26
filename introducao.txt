@@ -1,0 +1,816 @@
+github: https://github.com/matheusbattisti/curso_react
+
+O que é React?
+
+- Biblioteca JS para desenvolvimeto de aplicações front-end
+- Estas aplicações se chamam de SPA single page application
+- A arquitetura do React é baseado em componentes
+- Pode ser inserido em um aplicação ou podemos criar a aplicação apenas com React.
+- É mantido pelo Facebook.
+
+-Atalho rafce
+
+O que é node.js?
+
+- É uma reuntime de js
+- Ou seja, uma biblioteca utilizada por um compilador durante a execução do programa.
+- Esta contruída na V8 engine escrito em C++ da Google.
+- Possibilitando criar softwares em JS do lado do servidor.
+- Temos então um código JS roando em C++ para garantir alta performance.
+
+O que é o NPM?
+
+-Gerenciador de pacotes do Node.
+- Podemos baixar bibliotecas de terceiros pelo NPM
+- Executar scripts do programa.
+- Os módulos externos ficam na pasta chamada node_modules.
+- Deve ser descartável, ou seja, a cada instalação do projeto baixamos todos os pacotes novamente.
+
+---------
+
+NPX - executor de scripts do Node
+
+Criar projeto em React 
+npx create-react-app <nome>
+
+-Iniciar a aplicação:
+npm start
+
+
+ESTRUTURA BASE
+
+NODE_MODULES = Onde as dependencias do projeto ficam;
+public = Assets estáricos e HTML de inicialização.
+src = Onde vamos programar as nossas apps
+src/index.js = Arquivo de inicialização do React
+src/App.js = Componente principal da aplicação.
+
+
+extensão do react 
+- ES7 + React/redux/reacxt-native snippets;
+
+
+EMMET
+
+- é uma extensão nativa do vs code que ajuda a escrever html mais rapido.
+- Não vem configurada pelo react 
+- Temos que acessar file> settings> extensions e procurar EMMET
+- Lá vamos incluir a linguagem javascripts - javascriptreact
+
+Criando componentes
+
+-Ficam na pasta components 
+- São nomeados com a camel case: FirstComponent.js;
+- No arquivo criamos uma função, que contém o código deste componente.
+- Precisamos expostar a função, para reutilizá-lo.
+
+Importando componente
+- Reutilizar o componente- Utilizamos a sintaxe: import X from './components/X' onde X é o nome do
+componente.
+-Para colocar o componente importado em outro componente precisamos colocá-lo em forma de tag
+<FirstComponent/>
+
+
+JSX
+- JSX é o html do react 
+-Ficam no return do componente;
+- Temos algumas diferenças do HTML, por exemplo: class será ClassName;
+- Isso se dá pelas instruções semelhantes de JS e HTML, pois o JSX é js, então alguns terão
+nomes diferentes;
+-O jsx pode ter apenas um elemento pai;
+
+
+Comentários
+//
+ou no jsx {/* comentario */}
+
+Template Expressions
+
+- Template expressions é o recurso que nos permite executar JS no JSX e tambem interpolar variáveis.
+-sintaxe: {algumcodigo}
+-Tudo que está entre chaves é js e nos retorna um resultado.
+
+-Hierarquia de componentes
+-Os componentes que criamos podem ser reutilizados em vários componentes;
+-E ainda componentes podem formar uma hierarquia, sendo importandos uns dentro dos outros,
+como fizemos em app.
+
+Eventos
+
+- São essenciais para o front-end
+- Tipo o onclick
+- Criada na função do componente
+- As funções tem padrão HandleAlgumaCoisa
+
+Funções no Eventos
+-Quando a função é simples, podemos realizar a lógica no próprio evento.
+-Isso torna nosso codigo mais 'complicado', por atrelar lógica ao html
+-Mas em algumas situações é aplicável.
+
+Funções de renderização
+- Podemos criar funções que retornam JSX
+-Isso serve para criar situações que dependam de outras condições.
+- Ou seja, o JSX a ser renderizado pode variar por alguma variável, por exemplo.
+
+Imagens no React
+- As imgs publicas do projeto ficam na pasta public;
+- Podem ser acessadas pela tag img diretamente pelo /nome.jpg;
+- A pasta public fica linkada com o src das imgs;
+
+Imagens em Asset
+-Colocar uma pasta assets no src
+
+O que são Hooks?
+
+- Recursos do react que tem diversas funções;
+- Como: guardar e alterar o estado de algum dado na nossa aplicação.
+- Todos os hooks começam com use, por exemplo: useState;
+- Podemos criar os nossos hooks, isso é chamado de custom hook;
+-Os hoks precisam ser importados;
+- Geralemtne são uteis em todas as aplicações, utilizaremos diversos ao longo do curso.
+
+useState hook
+- o Hook de useState é um dos mais utilizados;
+- Utilizamos para gerenciar o estado de algum dado, variáveis não funcionam corretamente, 
+o componente não re-renderiza
+- Para guardar o dado definimos o nome da variável e para laterar vamos utilizar setNome, onde o nome 
+é o nome do nosso dado.
+
+Renderização de lista
+-Tipo de dados array
+- Utilizando o metodo map para auxiliar;
+- Alem dos dados podemos inserir JSX em cada iteração.
+
+
+MAP
+
+O método map() invoca a função callback passada por argumento para cada elemento do 
+array e devolve um novo array como resultado, mas o que isso quer dizer
+
+Pega um array e transforma em outro com a alteração que precisamos
+
+Key
+
+-O react precisa de uma chave unica em cada item iterado
+- Isso serve para ajualo no renderizacao do componente
+-em ultimo caso devemos utilizar o index do metodo get
+
+Previous state
+
+- É um recurso que nos permite pegar o dado em ser valor orginial dentro de um set de dado.
+-Isso é muito utilizado para modificiar listas.
+- O primeiro argumento de um set sempre será o previous state.
+
+Math.floor - Arredonda o valor para baixo
+
+Renderização Condicional
+
+- É quando imprimimos uma parte do template baseado em uma condição.
+- Ou seja, utilizando uma checagem com if;
+- isso é interessante em situações como: usuário autenticado ou nao;
+
+
+ADICIONAR UM ELSE 
+- Podemos também realizar um if/else no JSX;
+-Aqui devemos utilizar o if ternário
+- Onde temos a sintaxe: condição ? bloco1 : bloco2
+
+Props 
+
+-Props é outro recurso fundamental do React;
+- Nos permite passar valores de um componente pai para um componente filho.
+- Isso será muito útil quando os dados forem carregados via banco de dados, exemplo.
+- As props vem em um objetos no argumeto da função do componente.
+
+
+Desestruturar props
+-É comum passar mais de uma prop em um componente
+- PAra facilitar o React nos permite Desestruturar as propriedades que chegam.
+- Se temos duas props: name e age;
+-Podemos fazer assim: function MyComponent({name, age})
+- Agora não precisamos mais utilizar props.algumaCoisa;
+
+Reutilização de componentes
+-Com props a reutilização de componentes começa a fazer muito sentido.
+- Se temos os dados de 1000 carros por exemplo, podemos reaproveitar nosso CarDetails 1000 vezes
+- Isso torna nosso código mais padronizado, facilitando a manutenção.
+
+Reutilização com loop
+-Arrays podem ter muitos itens;
+- O correto é utilizar uma estrutura de loop(map) para a exibição.
+- E com isso conseguimos conciliar os três conceitos: renderização de listas, reaproveitamento de 
+componentes e props
+
+React Fragments
+-São interessanters quando precisamos ter mais que um elemtno pai em um componente
+- Criamos uma tag vazia <></>
+-Ela serve como elemento pai, não alterando a estrutura do HTML com uma div, por exemplos.
+
+Children prop
+- É um recurso utilizado para quando um componente precisa ter JSX dentro dele.
+- Porém este JSX vem do componente pai.
+- Então o componente age como um container, abraçando estes elementos.
+- E children é considerada uma prop de componente
+
+Funções em props
+-As funções podem ser passadas para as props manualmente,
+- Basta criar a função no componente pai e enviar como prop para o componente
+- No ocmponente filgo ela pode ser ativa por um evento.
+
+Elevação de state
+-State lift é quando o valor é elevado do componente filho para o pai.
+- Geralmente temos um componente que usa o state e outro que o altera.
+
+React Com CSS
+
+CSS Global
+- É utilizado para estilizar diversos elementos em comum ou fazer um reset no css
+- Utilizamos o arquivo index.css
+- Está na pasta src
+
+CSS de componente
+-É utilizado para um componente em específico.
+- Geralmente é criado um arquivo com o mesmo nome do componente e é importado no componente.
+- Note que este médoto não é scoped, ou seja, o CSS vaza para outros componentes se houver uma regra em colisão.
+- O react já cria um exemplo desta técnica com App.css/js
+
+Inline Style
+- O inline style no REact é igual do CSS
+- Por meio do atributo style conseguimos aplicar regreas diretamente em um elemento.
+
+Inline Style dinâmico
+- O css dinâmico inline aplica estilo baseado em uma condicional.
+- Vamos inserir no atributo um if ternário.
+- Dependendo da condição podemos mudar as regras de estilo um elemento recebe.
+
+Classes Dinâmicas no CSS
+- Podemos também aplicar lógica para mudar a classe de css de um elemento.
+- Também utilizamos o if ternário
+- É mais interessante que o CSS inline;
+- Pois as classes estarão isoladas no arquvivo de CSS, resolvendo o problema
+de reorganização de código.
+
+CSS Modules
+- É um recurso do CSS scoped.
+- Ou seja, ele vai ser exclusivo do componente;
+- O nome do arquivo é: componente.module.css;
+- Precisamos importar no componente
+
+Formulários com react
+
+-no React também utilizamos a tag form para formulários.
+- As labels dos inputs contém o atributo htmlFor, que deve ter o valor do name input
+- Não utilizamos action, pois o processamento será feito de forma assíncrona.
+
+Label envolvendo o input
+- O comum é a tag label envolvendo o input 
+- Isso faz com que o atributo for se torne opcional
+- Simplificando nosso estrutura de HTML, sem perder a semantica.
+
+Manipulação de valores
+- Para manipular os valores dos inputs vamos utilizar o hook useState.
+- Ou seja, podemos armazenar na variável e utilizar o set para alterar o valor.
+- Vamos criar uma função para alterar o valor no evento onChange.
+- Deixando nosso código fácil de trabalhar nas próximas etapas: como envio dos dadospara o 
+BD e validação.
+
+Simplificando a manipulação
+-Quando temos vários inputs podemos realizar a manipulação de forma mais simples.
+- Basicamente criamos uma função inline no onChange.
+-Ele vai alterar o valor do state com o método set, da mesma forma que a função isolada.
+
+Envio de formulário.
+- Para enviar um form vamos utilizar o evento onSubmit;
+- Ele chamará uma função, e nesta devemos lembrar de parar a submissão com o preventDefault.
+-Nesta etapa podemos realizar validações, envio de form para o servidor reset de form e outras 
+ações.
+
+Controlled inputs
+-É um recurso que nos permite mais flexibilidade nos forms de React.
+- Precisamos apenas igualar o valor ao state.
+- Um uso muito comum: forms de edição, que os dados vem do back-end, conseguiresmos
+preencher o input mais facilmente
+
+Limpando forms
+-Com o controller inputs limpar o form será fácil
+-Basta atribuir um valor de uma string vazia aos states e pronto.
+
+Input textarea
+- Pode ser considerado um input de texto normal
+- Utilizaremos o value para alterar o state iniail.
+- E o evento onChange para modificar o valor do state.
+
+Input de Select
+- Quando temos alteração de um valor o evento onChange pode captar isso.
+- O value também pode atribuir qual option estará selecionada.
+
+JSON Server
+- É um pacote ncm
+- Simula uma API, e isso nos possibilita fazer requisições HTTP
+- Vamos aprender a integrar este recurso com react
+- Podemos entender isso como uma etapa de preparação para APIs reutilizados
+- Ou seja, atingir o mesmo resultado mais sem precisar de uma estrututa no bacn-end
+- Vamos criar um projeto e instalar o JSON Server
+
+npx create-react-app nomeDoApp
+npm i json-server
+no packege-lock.json adicionar o server:
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "json-server --watch data/db.json"
+  },
+
+rodar o comando: 
+npm run server
+dps em outra aba
+npm start
+
+
+A importância do useEffect 
+
+- Faz com que determinada ação seja executada apenas uma vez.
+- Isso é interessante pois os componentes estão sempre se re-renderizando, então 
+precisamos ter ações únicas as vezes:
+- O useEffect ainda possui um array de dependencias, que deve conter os dados que ativem
+a exeução da função de forma automática;
+- O useEffect estaraá presente sempre nas requisições assíncronas.
+
+Resgatando dados com react
+- Para tarzer os dados vamos ter que utilizar vários recursos.
+- Primeiramente ter um local para salvá-los (useState)
+- Renderizar a camada a API apenas uma vez (useEffect)
+-Um meio de fazer a requisição assíncrona (Fetch API)
+
+
+Adicionando dados
+-Para adicionar um item vamos precisar resgatar dados do form com o useState
+- Reunir eles em uma função após o submit e enviar um request de POST para a nossa API
+- O processo é bem parecido com o resgate de dados, porém enviando os dados.
+
+Carregamento dinâmico de dados
+- Se a requisição foi feita com sucesso, podemos adicionar o item a lista após o request.
+-Isso torna nossa aplicação mais performática.
+- Utilizaremos o set do useState para isso.
+
+Custom hook para o Fetch
+- E normal dividir funções que podem ser reaproveitados em hooks.
+- Está tecnica é chamada de custom hook.
+- Os hooks ficam na posta hooks
+-Devemos utilizar o padrão useName;
+- Basicamente criamos uma função e exportamos ela.
+
+Refatorando o POST
+- Podemos utilizar o mesmo hook para incluir uma etapa de POST
+- Vamos criar um novo useEffect que mapeia uma outra mudança de estado;
+- Após ela ocorrer executamos a adição de produto
+
+obs: nem sempre reutilizar um hook é a melhor estratégia
+
+Estado de loading
+- Intervalo de loading entre a requisição e o recebimento.
+
+React Router
+
+- É um dos pacotes mais utilizados para criar uma estrutura de rotas em aplicações de react;
+- Ou seja, permite que nossas SPAs ternham multiplas páginas.
+- Precisamos unstalar no nosso projeto.
+- A configuração e utilização é simples.
+- Também temos funções como: Redirect, Nested Routes, Not Found Routes, etc.
+
+
+Iniciar projeto
+cria a pasta
+npx create-react-app reactrouter
+
+cria a pasta "data" > db.json
+
+no packege.json criar o server nos scripts
+"scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "json-server --watch data/db.json"  --  esse aqui
+  },
+
+instalar json-server e react Router
+
+npm i json-server react-router-dom
+
+npm run server
+outro aba
+npm start
+
+Configurando o React Router
+- Para configurar o ReactRouter vamos ter que importar três elementos de react-router-dom
+- BrowserRouter: define onde a área do nosso app que vai trocar as páginas;
+- Routes Define as rotas.
+- Route: um elemtno deste para cada rota, configurar um path e componente da rota.
+
+Adicionando links
+-Para criar links para as páginas vamos precisar utilizar o Link do React Router
+- No Link configuramos o parâmetro to, que recebe a URL/path que será redirecionado quem clicar no link
+- Vamos criar um componente Navbar para isso.
+
+Carregando dados
+-Vamos exercitar novamente o carregamento de dados com nosso hook useFetch;
+- Depois podemos utilizá-los para o carregamento de dados indivíduais;
+- Utilizaresmos o hook igual ao da última seção e vamos imprimir os produtos na Home da mesma forma.
+
+Rota Dinâmicas
+-Para criar uma rota dinâmica vamos precisar definir uma nova Route em app.js
+- que deve ter o padrão de : "/products/:id"
+- Onde o :id é o dado dinâmico, ou seja, podemos ter qualquer valor;
+-Na página podemos utilizar o hook useParams para resgatar esta informação.
+
+Carregando dado indivídual
+- vamos utilizar o id recebido para formar a nova URL.
+- E por fim utilizar o hook useFetch para trazer o item.
+- Por fim a validação e impressao do mesmo no JSX
+
+Nested Route
+- As nested routes indicam urls mais complexas, como:
+/products/:id/something;
+- Neste caso vamos precisar criar um componente que corresponda com o padrão indicado e também a url em app.js
+- NA nested route teremos o acesso ao parâmetro da url, também;
+
+No match route (404)
+-Podemos criar uma página 404 facilmente com react router- basta criar o componente da pagina
+- no arquivo app.js definir um path como *;
+
+Link ativo
+- Para ter facil acesso a uma modificação para os links ativos vamos trocar o link pelo NavLink
+- Neste elemento temos acesso a um valor chamado IsActive;
+- Ou seja, podemos ativar uma classe se a rota atual for a que está no atributo to;
+
+Search Params
+- É um recurso que permite obter o que vem na url em forma de parâmetro, ex: produtos?q=camisa
+- Utilizamos o hook useSearchParams para obtê-los
+- Com este recurso fica simples fazer uma funcionalidade de busca no sistema.
+
+
+Redirect
+- Redirecionamento de páginas eventualmente
+- Exemplos: página antiga do sistema responde agora a uma nova url
+- Para isso vamos criar uma rota com Route normalmente.
+- Mas em element vamos utilizar o componente NAvigate com um to que vai para a rota correta.
+
+Context API 
+- um recurso que facilita o compatilhamento de um estado entre componentes
+- Ou seja, quando precisamos de dados 'globais', provavelmente precisamos utilizar o Context.
+- O context precisa encapsular os componentes que receberão seus valores, Geralmente
+colocamos no App.js ou index.js
+- Geralmente ficam na pasta context
+
+Criando contexto 
+- O arquivo deve sempre ter a primeira letra maiuscula, e geralmente termina em Context:
+SomeContext.js
+- A convenção é deixar na pasta context em src.
+- É preciso importar o arquivo onde será utilizado
+
+Provider
+- Delimita onde o contexto é utilizado
+- Vamos criar uma espécie de componente com a prop children
+- O provider deve encapsular os demais componentes em que precisamos consultar ou alterar 
+o valor
+- Geralmente fica em App.js ou index.js
+-Agora podemos compartilhar o valor do contexto em todos os componentes.
+
+
+ENTENDENDO HOOKS
+
+useState
+- É um dos principais hooks do react
+- O principal propósito é gerenciar valores.
+- Podemos consultar um valor e alterar.
+- Isso nos permite re-renderizar um componente, o que não acontece com a manipulação de variáveis.
+
+npm i react-router-dom
+
+useState e inputs
+- Atrelando o useState a um input podemos fazer algumas ações.
+- Alteração de um state por evento de onChange
+- Limpeza de inputs (Controlled input)
+- Apóso preenchimento total do form, unir os states e fazer um envio dos dados para o back-end.
+
+useReducer
+
+- o useReducer tem a mesmo função que o useState, ele gerencia valores;
+- Porém temos a possibilidade de executar uma função na hora da alteração do valor;
+-Então temos que o useReducer recebe um valor para gerenciar e uma função para alterar esse valor;
+
+Avançando em useReducer
+
+- Se ouserReducer fosse utilizado como no exemplo passado, não teria tanto diferença do useState.
+- Por isso o reducer geralmente contém operações mais complexas, utilizando a estrutura
+switch com actions.
+
+useEffect 
+
+-O useEffect é utilizado para várias ações no nosso App, junto com useState é um dos hooks mais utilizados.
+- Podemos realizar desde alterações na DOM a requisições HTTP.
+- E o grande motivo é: conseguirmos controlar quatas vezes algo acontece;
+- A sintaxe é formada por uma função a ser executada e um array de dependências.
+
+Limpeza do useEffect
+
+-Alguns efeitos precisam tem uma técnica de cleanup (limpeza) para garantir o seu funcionamento
+- Não fazer isso pode gerar erros ou comportamentos indesejados.
+Exemplo: um temeout que ao mudar de página pode continuar a ser executado, pela falta desta limpeza.
+
+useContext
+
+- É o hook utilizado para consumir um contexto, da CONTEXT API
+- Vamos precisar criar o contexto e também o Provider
+- Envolver os componentes que receberão os valores compartilhados
+- E então fazer o uso do hook onde necessário.
+
+useRef
+
+-Pode ser utilizado como useState para gerenciar valores
+- A diferença é que ele é um objeto, seu valor está na propriedade current.
+- Outra particularidade do useRef é que ele nao re renderiza o componente ao ser alterado.
+
+useRef e o DOM
+
+- O useREf pode ser utilizado para selecionar elementos do JSX
+- Com isso podemos fazer manipulação de DOM ou aplicar funções como a focus, que foca no input.
+
+useCallback
+
+-Pode ser utilizado para duas situações.
+- Basicamente memoriza um função, fazendo ela não ser reconstruída a cada renderização de um componente.
+- O primeiro caso é quando estamos prezando pela performance, então queremos que uma função muito complexa
+não seja recontruída toda vez.
+-Já o segundo é quando o próprio React nos indica que uma função deveria estar contida em um
+useCallback, para evitar problemas de performance.
+
+useMemo
+
+-Pode ser utilizado para garantir a referência de um objeto
+-Fazendo com que algo possa ser atrelado a uma referência e não a um valor
+- Com isso conseguimos condicionar useEffects a uma variável de maneira mais inteligente.
+
+useLayoutEffect
+
+- Parecido com o useEffect
+- Porém este hook roda antes de renderizar o componente.
+- Ou seja, o hook é síncrono, bloqueando o carregamento da página para o sucesso da sua funcionalidade
+- A ideia é executar algo antes que o usuário veja a página.
+
+useImperativeHandle
+
+- Com este hook temos como acionar ações em um outro componente de forma imperativa.
+- Como não podemos passar refs como props, precisamos usar uma função fowardRef;
+- Isso nos permite passar as referências, e torna o nosso exemplo viável.
+
+Custom Hooks
+- São os hooks que nós criamos
+- Muitas vezes para asbtrair funções complexas do componente ou simplesmente reaproveitar código.
+
+React dev tools
+
+- é uma extensão do navegador
+- Nela conseguimos entender o que o react está gerando por meio do nosso codigo.
+- Conseguimos também verificar os states e outros parâmetros.
+
+useDebugValue
+
+-é utilizado para debug
+- Utilizado em custom hooks
+- Adiciona uma área no react dev tools, ela estará no componente em que o hook é utilizado.
+
+reactgram
+
+cria pasta backend 
+npm init -y : inicia o packege.json
+
+npm i bcryptjs cors dotenv express express-validator jsonwebtoken mongoose multer
+bcryptjs: manipula as senhas do usuarios
+cors: receber requisições da mesma origem
+dotenv: ficam as variaveis de ambiente na nossa aplicação
+express: framework pra gnt criar a API
+express-validator: middleware que trtabalha entre as requisições para validar os dados
+jsonwebtoken: gera e valida os tokens dos usuarios para validação
+mongoose: ferramenta utilizado para o BD
+multer: upload de imagens
+
+instalar o nodemon: simula um servidor local
+
+npm i --save-dev nodemon
+
+testar no postman
+
+front end
+npx create-react-app frontend
+
+npm i react-icons react-router-dom @reduxjs/toolkit react-redux
+
+
+ES6 javascript MODERNO
+
+-Uma nova versão de js que trouxe novas funcionalidades
+- São conhecimentos base para aprender os frameworks modernos
+(react, vue, angular, etc)
+-E também agilizam muito o desenvolvimento de js puro.
+
+var let e const 
+-a let é semlhante ao var, altera os valores.
+- E a const, que é a forma de declarar constantes.
+- O grande diferencial é o escopo de blocos, não temos mais variáveis sendo vazadas, para outros
+escopos por causa do mesmo nome.
+
+Arrow Functions 
+
+-É um recurso para criar funções de forma mais simples.
+- Mas ela não funciona exatamente como uma function em todos os aspectos.
+- O this da arrow function é relacionado ao elemento pai de quem está executando.
+
+Filter
+
+-Metodo de um array para filtrar dados, baseado em alguma condição
+- isso nos da um array com apenas os elementos que queremos, de forma performatica.
+
+
+Map
+- é um meotodo de array, que percorre todos os elementos.
+- Estamos querendo modificar os dados do array
+
+Templates literals
+-Recursos de template literals permite concatenas uma string de forma mais simples.
+- Pode colocar as variáveis entre o texto
+- a string fica entre: `texto`
+- as variaveis colocadas em ${varivael}
+
+Destructuring
+- É um recurso que pode ser utilizado em arrays e objetos
+- A ideia é transformar os itens de um desses dados em variável
+-Simplificando a declaração de n variáveis para apenas uma linha.
+
+Spread Operator.
+- Pode ser utilizado também em arrays e objetos.
+- Utilizamos para construit novos valores destes dados em outros arrays e objetos.
+- Ou seja, podemos unir vários arraysde maneira simples e adicionar valores de um objeto a outro.
+
+Classes
+- são recursos fundamentais para programar com orientação a objetos.
+- Agora o JS tem este recurso cimplementado, onde temos acesso a:
+constructor, propriedades, metodos e mais.
+-Antes as classes eram baseada em funções (constructor functions)
+
+Herança
+Podemos criar herança de classes.
+- Utilizamos a palavra Extends para referer a classe herdada
+-E as propriedades que utilizamos dela, devem ser enviadas via função super.
+
+API
+- Acrônimo para interface de porgramação de aplicações (aplication programmin interface)
+- Uma forma simples de comunicação entre aplicações;
+- Não necessita de telas, respostas geralmente são em json
+- Independente do front-end, a API não possui ligação com o front.
+- Baseadas em requisição e resposta.
+Podemos criar uma API com express.
+
+diferença entre REST e RESTful
+
+-REST sifnifica representational state transfer ou tranferencia representacional de estado 
+- Um estilo de arquitetura, que define como as apis devem ser criadas.
+- Seguindo todos os padrões a API é considerada RESTful
+- alguns dos pontos são: respostas uniformes, sem ligação de estado cache de respostas e outros.
+https://www.ibm.com/docs/pt-br/was-nd/8.5.5?topic=applications-defining-uri-patterns-resources-in-restful
+
+O que é SPA?
+-Single page aplication
+- É quando a aplicação possui um front-end separado do back-end
+-ou seja, uma API para o back-end
+- É um framework front end JS, como REACT, VUE, angular
+- Aplicação deste tipo estão dominando o mercado.
+- E as sessoesw seguintes tem como objetivo trablhar focadas em SPA
+-A arquitetura anteriormente utilizada é conhecida como Monolith
+
+Verbos HTTP
+-Os verbos andam de maos dadas com as as APIs, e fazem parte do REST
+- GET, POST, PUT, DELETE, PATCH etc
+- Cada um representa uma ação de API, ou seja, são essenciais.
+-É muito importante que as nossas funcionalidades, usem os metodos corretos.
+Enviamos o metodo através da requisição.
+
+
+Criando uma API com express
+
+- Para criar uma API teremos uma tarefa bem simples, comparada a estrutura com Handlebars
+- Basta instalar o Express, ele fara tudo sozinho neste ponto.
+-Depois criaremos uma rota que responde em JSON, este é o dados de comunicação entre app e api 
+- É importante definir o verbo correto, como GET ou POST
+
+iniciar packege json
+npm init -y
+
+npm install express nodemon
+
+no packege json 
+adicionar em script o start
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./index.js localhost 3000"}
+"
+
+
+npm start 
+
+
+Conhecendo o Postman 
+
+-É um clioente para testes de API
+- Podemos então criar o back-end antes ou separado do front, só com a ajuda deste software.
+- Como você deve imaginar, é fundamental quando estamos criando APIs.
+- Podemos simular verbos, corpo de requisição, inserir headers, tudo que é possível com uma aplicação web.
+
+Testando rota com postman
+- Configurar o clioente
+-Inserir o verbo correto
+-Configurar o endpoint, que é a url onde nossa rota foi estabelecida
+-Enviando a requisição, recebemos a resposta.
+
+Criando rota de post 
+- vamos utilizar o metodo post do Express.
+- Podemos extrar os dados da requisição, acessando req.body
+- Da mesma maneira que no get, podemos retornar uma resposta JSON pela API.
+
+Adicionando status na resposta
+- Os status podem ajudar no desenvolvimento da nossa aplicação.
+-Exibindo mensagens de sucesso ou erro, exemplo:
+- Precisamos entre res e o metodo json definir um numero de status HTTP.
+-Isso é feito por meio do método status
+
+Typescript
+
+-É um superset para linguagem JS
+- Ou seja, adiciona funções ao JAvaScript, como a declaração de tipos de variável.
+- Pode ser utilizado com frameworks/libs, como Express e React
+- Precisa ser compilado em JS, ou seja, não executamos TS.
+- Desenvolvido e mantido pela Microsoft
+
+Porque Typescript?
+- Adicona confiabilidade ao programa (tipos)
+- Provê novas funcionalidades a JS, como interfaces
+- Com o TS podemos verificar os erros antes da execução do código, ou seja, no desenvolvimento.
+- Deixa JavaScript mais explícito, diminuindo a quantidade de bugs.
+- Por estes e outros motivos perdemos menos temo com debug.
+
+Instalando o TypesScript
+- Para instalar o TyperScript vamos utilizar o npm
+-O nome do pacote é typescript
+-E vamos adicionar de forma global com a flag -g
+-A partir da instalação temos como executar/compilar TS em qualquer local da nossa maquina
+com o comando tsc
+
+npm install typescript -g
+tsc -v
+
+Compilar tsc nome do arquivo
+
+React com TS
+
+- Adicionar TS ao React nos da mais possibildiades.
+-Seguindo a mesma linha de que em JS, temos uma forma mais padronizada para programar.
+- Como os tipos para componentes ou mapeamento de props por meio de interface
+-Isso da mais confiabilidade ao projeto e está sendo cada vez mais utilizado.
+
+Instalar React com TS
+-Create-react-app e adicionar a flag -template com o valor de typescript
+-Um novo projeto é criado, agora com arquivos .tsx
+- Iniciamos normalmente
+
+npx create-react-app 11_react_com_ts --template typescript
+
+Estrutura de React Com TS
+- A estrutura react quando adicionamos TS, não muda muito.
+- Temos as pastas clássicas como: node_modules e public
+- Em src que as coisas diferentes ficam, temos a criação de arquivos.tsx
+-Que são arquivos jsx por´pem com a possibilidade de aplicacao das funcionalidades de TS
+- Podemos executar o projeto ocm npm run start
+
+extensao para React com TS
+-TypeScript REact code snippets
+-Ajuda com atalhos
+-Como o tsrafce, que cria o componente funcional.
+
+Destructuring nas props
+-Permite separar um array ou objeto em variaveis
+- Aplicamos isso nas props, para nao rpecisar repetir o nome do objeto sempre
+
+
+Enum 
+- Forma de formatar um objeto com chaves e valores
+- Podemos utilizar ocmo props
+- Passando a chave pela prop, impirmimos o valor dela no componente.
+
+
+Types 
+-Além das interface, podemos criar estruturas de tipos com o Type.
+-Isso nos permite criar dados com tipos de dados fixos
+- Ou até tipos customizados, como quando utilizamos o operador |
